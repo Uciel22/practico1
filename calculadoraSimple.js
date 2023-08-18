@@ -1,113 +1,52 @@
-// Funcionalidad de la calculadora simple
-let operandoA;
-let operandoB;
-let operacion;
-
-function init(){
-   // variables
-   let resultado= document.getElementById("resultado");
-   let reset= document.getElementById("reset");
-   let suma= document.getElementById("suma");
-   let resta= document.getElementById("resta");
-   let multiplicacion= document.getElementById("multiplicacion");
-   let division= document.getElementById("division");
-   let igual= document.getElementById("igual");
-   let uno= document.getElementById("uno");
-   let dos= document.getElementById("dos");
-   let tres= document.getElementById("tres");
-   let cuatro= document.getElementById("cuatro");
-   let cinco= document.getElementById("cinco");
-   let seis= document.getElementById("seis");
-   let siete= document.getElementById("siete");
-   let ocho= document.getElementById("ocho");
-   let nueve= document.getElementById("nueve");
-   let cero= document.getElementById("cero");
-
-   //eventos
-   uno.onclick = function(e){
-    resultado.textContent = resultado.textContent + "1";
-   }
-   dos.onclick = function(e){
-    resultado.textContent = resultado.textContent + "2";
-   }
-   tres.onclick = function(e){
-    resultado.textContent = resultado.textContent + "3";
-   }
-   cuatro.onclick = function(e){
-    resultado.textContent = resultado.textContent + "4";
-   }
-   cinco.onclick = function(e){
-    resultado.textContent = resultado.textContent + "5";
-   }
-   seis.onclick = function(e){
-    resultado.textContent = resultado.textContent + "6";
-   }
-   siete.onclick = function(e){
-    resultado.textContent = resultado.textContent + "7";
-   }
-   ocho.onclick = function(e){
-    resultado.textContent = resultado.textContent + "8";
-   }
-   nueve.onclick = function(e){
-    resultado.textContent = resultado.textContent + "9";
-   }
-   cero.onclick = function(e){
-    resultado.textContent = resultado.textContent + "0";
-   }
-   reset.onclick = function(e){
-    resetear();
-   }
-   suma.onclick = function(e){
-    operandoA = resultado.textContent;
-    operacion = "+";
-    limpiar();
-   }
-   resta.onclick = function(e){
-    operandoA = resultado.textContent;
-    operacion = "-";
-    limpiar();
-   }
-   division.onclick = function(e){
-    operandoA = resultado.textContent;
-    operacion = "/";
-    limpiar();
-   }
-   multiplicacion.onclick = function(e){
-    operandoA = resultado.textContent;
-    operacion = "*";
-    limpiar();
-   }
-   igual.onclick = function(e){
-    operandoB = resultado.textContent;
-    operacion = "+";
-    resolver();
-   }
+//Funciones para realizar las operaciones
+function suma(x, y) {
+    return x + y;
 }
-function limpiar(){
-    resultado.textContent = "";
+function resta(x, y) {
+    return x - y;
 }
-function resetear(){
-    resultado.textContent ="";
-    operandoA = 0;
-    operandoB = 0;
-    operacion = "";
+function multiplicacion(x, y) {
+    return x * y;
 }
-function resolver(){
-    let res = 0;
- switch(operacion){
-    case "+":
-        res = parseFloat(operandoA) + parseFloat(operandoB);
-        break;
-        case "-":
-            res = parseFloat(operandoA) - parseFloat(operandoB);
+function division(x, y) {
+    return x / y;
+}
+//calculos según la operación elegida
+function calcularResultado(option, num1, num2) {
+    let resultado;
+    switch (parseFloat(option)) {
+        case 1:
+            resultado = suma(num1, num2);
             break;
-            case "*":
-        res = parseFloat(operandoA) * parseFloat(operandoB);
-        break;
-        case "/":
-            res = parseFloat(operandoA) / parseFloat(operandoB);
+        case 2:
+            resultado = resta(num1, num2);
             break;
- }   
- resetear();
- resultado.textContent = res;
+        case 3:
+            resultado = multiplicacion(num1, num2);
+            break;
+        case 4:
+            resultado = division(num1, num2);
+            break;
+    }
+    return resultado;
+}
+//validación de números, longitud y la operación elegida, se podría haber trabajado con input tipo number
+function validar(opcion, num1, num2) {
+    if (isNaN(opcion)) {
+        alert('Seleccione una operación!!!');
+        exit();
+    }
+    if (isNaN(num2) || isNaN(num1) || num2===0) {
+        alert('Uno y/o ambos número/s no son válidos. O el divisor es 0!!!');
+        exit();
+    }
+}
+//función general
+function main() {
+    let opcion = parseInt(document.getElementById('operacion').value);
+    let num1 = Number(document.getElementById('num1').value);
+    let num2 = Number(document.getElementById('num2').value);
+    validar(opcion, num1, num2);
+    //limitando la cantidad de decimales
+    return resultado=(calcularResultado(opcion, num1, num2)).toFixed(2);
 }
