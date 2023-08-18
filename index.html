@@ -1,41 +1,56 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="practico1" content="practico1">
-        <title>Calculadora simple</title>
-        <link type="text/css" href="estilos.css" rel="stylesheet">
+        <meta name="practico1" content="practico1, calculadora Simple,">
+        <title>Calculadora Simple</title>
+        <link type="text/css" rel="stylesheet" href="estilos.css">
     </head>
-    <body onload="init();">
-        <table class="calculadora">
-            <tr>
-                <td colspan="4"><span id="resultado"></span></td>
-            </tr>
-            <tr>
-                <td><button id="siete">7</button></td>
-                <td><button id="ocho">8</button></td>
-                <td><button id="nueve">9</button></td>
-                <td><button id="division">/</button></td>
-            </tr>
-            <tr>
-                <td><button id="cuatro">4</button></td>
-                <td><button id="cinco">5</button></td>
-                <td><button id="seis">6</button></td>
-                <td><button id="multiplicacion">*</button></td>
-            </tr>
-            <tr>
-                <td><button id="uno">1</button></td>
-                <td><button id="dos">2</button></td>
-                <td><button id="tres">3</button></td>
-                <td><button id="resta">-</button></td>
-            </tr>
-            <tr>
-                <td><button id="igual">=</button></td>
-                <td><button id="reset">C</button></td>
-                <td><button id="cero">0</button></td>
-                <td><button id="suma">+</button></td>
-            </tr>
-        </table>
-        <script src="calculadoraSimple.js" ></script>
+    <body>
+        <header>
+            <h1>CALCULADORA SIMPLE</h1>
+        </header>
+        <div class="container">
+            <div class="calculadora">
+                <form id="formulario" action="" name="formulario" autocomplete="off">
+                    <!--Utilizo form para luego poder limpiar los input con un button-->
+                    <table>
+                        <tr>
+                            <td class="indicaciones">Número 1</td>
+                             <!--los input podrían ser number pero uso text para mostrar la validación-->
+                            <td><input id="num1" type="text"></td>
+                            <td rowspan="2" style="text-align: center">
+                                <select name="operacion" id="operacion" class="select" required>
+                                    <option value="" selected disabled>Elegir la Operación</option>
+                                    <option value="1">+ Suma</option>
+                                    <option value="2">- Resta</option>
+                                    <option value="3">* Multiplicación</option>
+                                    <option value="4">/ División</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="indicaciones">Número 2</td>
+                            <td><input id="num2" type="text"></td>
+                        </tr><br/>
+                        <tr>
+                            <td colspan="3" style="text-align: center">
+                                <button type="button" class="ov-btn-slide-left" id="enter" onclick="document.getElementById('resultado').innerHTML=main();">Calcular</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="indicaciones">Resultado:</td>
+                            <td colspan="2"><h3 id="resultado" class="resul"></h3></td>
+                        </tr>
+                        <tr>
+                            <!--el button tipo reset limpia los input, agrego onclick para dejar en blanco el resultado ya que está en un H3-->
+                            <td colspan="3" style="text-align: center"><button type="reset" class="reset" onclick="document.getElementById('resultado').value='';">Limpiar</button></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <!--Aquí carga archivo calculadoraSimple.js con las funciones-->
+        <script type="text/javascript" src="calculadoraSimple.js"></script>
     </body>
 </html>
