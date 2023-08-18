@@ -1,34 +1,162 @@
 @charset "utf-8";
-/*documento CSS*/
-*{
+/*estilos al cuerpo del archivo html*/
+body{
+    border-top: 0;
     margin: 0;
-    padding: 0;
+    margin-top: 0;
+    padding-top: 0;
+    background-color: #adb2fc;
+    background-size: contain;
 }
-.calculadora {
-    display: block;
-    margin:0 auto;
-    padding: 15px;
-    background-color: #DC4C45;
-    width: 330px;
-    height: 510px;
-    border-radius: 25px;
-    margin-top: 50px;
-}
-.calculadora td button{
-    display: block;
-    width: 70px;
-    height: 70px;
-    font-size: 25px;
-}
-#resultado {
-    display: block;
+/*estilos al título*/
+h1{
+    background-color: cornflowerblue;
     text-align: center;
-    font-size: 40px;
-    margin-bottom: 50px;
-    width: 300px;
-    height: 100px;
-    line-height: 100px;
-    background-color: #fff;
-    border-radius: 25px;
-    overflow-y: scroll;
+    border-top: 0;
+    border: 2px solid;
+}
+.container{
+  display: grid;
+  /*grid-template-columns: auto auto;
+  grid-gap: 10px;
+  grid-template-rows: auto auto;
+  border-color: #4741d7;
+  border: 2px solid;*/
+  grid-template-columns: (1fr, 1fr, 1fr);
+  grid-gap: 20px;
+  grid-auto-rows: minmax(100px, auto);
+}
+.calculadora{
+  grid-column: 0 / 2;
+  
+}
+table{
+    background-color: whitesmoke;
+    border-radius: 15px;
+    border-color: blue;
+    border: 2px;
+    margin: auto;
+    padding: 5px;
+}
+#num1, #num2{
+    font-variant-numeric: oldstyle-nums;
+    text-align: center;
+    height: 20px;
+    font-size: 20px;
+}
+.resul{
+    background-color: rgb(130, 241, 130);
+    border: 0;
+    height: 40px;
+    width: 85%;
+    border-radius: 13px;
+    font-variant-numeric: oldstyle-nums;
+    text-align: center;
+    font-size: 30px;
+}
+.indicaciones{
+    text-align: right;
+    font-family: fantasy;
+}
+.reset{
+  border-radius: 15px;
+  background-color: rgb(240, 176, 176);
+  width: 30%;
+  height: 30px;
+}
+
+/* botón Calcular, estilos sacados de divi.com */
+.ov-btn-slide-left {
+  background: #fff; /* color de fondo */
+  color: rgb(4, 75, 206); /* color de fuente */
+  border: 2px solid #4741d7; /* tamaño y color de borde */
+  padding: 10px 40px;
+  border-radius: 3px; /* redondear bordes */
+  position:relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+  height: 90px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.ov-btn-slide-left:hover {
+  color: #fff; /* color de fuente hover */
+}
+.ov-btn-slide-left::after {
+  content: "";
+  background: cornflowerblue; /* color de fondo hover */
+  position: absolute;
+  z-index: -1;
+  padding: 16px 20px;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: -100%;
+  right: 100%;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+}
+.ov-btn-slide-left:hover::after {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+}
+.select {
+  /* Reset Select */
+  appearance:initial;
+  outline: 20px red;
+  border: 1;
+  /* Personalize */
+  flex: 1;
+  padding: 0 1em;
+  color: black;
+  background-color:#004d9b var(--darkgray);
+  background-image: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 15px;
+}
+.select option{
+  font-size: 20px;
+}
+/* Remove IE arrow */
+.select::-ms-expand {
+  display: none;
+}
+/* Custom Select wrapper */
+.select {
+  position: relative;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color:#bed7f1;
+}
+/* Arrow */
+.select::after {
+  /*content: '\25BC';*/
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  background-color: #0452a0;
+  transition: .25s all ease;
+  pointer-events: none;
+}
+/* Transition */
+.select:hover::after {
+  color: #12f312;
+}
+.container {
+  position : absolute;
+  top: 50%;
+  left : 50%;
+  transform :
+  translate(-50%,-50%); 
 }
